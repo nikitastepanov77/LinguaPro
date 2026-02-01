@@ -1,0 +1,358 @@
+
+:root {
+  --header-height-mobile: 60px;
+  --header-height-desktop: 80px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.header-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    padding: 0 24px;
+  }
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height-mobile);
+  transition: height 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    height: var(--header-height-desktop);
+  }
+}
+
+.header-scrolled .header-content {
+  height: calc(var(--header-height-mobile) - 10px);
+}
+
+@media (min-width: 768px) {
+  .header-scrolled .header-content {
+    height: calc(var(--header-height-desktop) - 10px);
+  }
+}
+
+/* Логотип */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px 0;
+}
+
+.header-logo:hover {
+  opacity: 0.9;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+}
+
+.header-scrolled .logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+@media (min-width: 768px) {
+  .header-scrolled .logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.icon-globe {
+  width: 18px;
+  height: 18px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .icon-globe {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.header-scrolled .icon-globe {
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 768px) {
+  .header-scrolled .icon-globe {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .logo-text {
+    font-size: 1.5rem;
+  }
+}
+
+.header-nav.desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header-nav.desktop {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-nav.desktop {
+    gap: 32px;
+  }
+}
+
+.nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+}
+
+.nav-link.active {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  border-radius: 1px;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  white-space: nowrap;
+}
+
+@media (min-width: 1280px) {
+  .cta-button {
+    padding: 10px 24px;
+  }
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* Кнопка мобильного меню */
+.mobile-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(59, 130, 246, 0.1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-button {
+    display: none;
+  }
+}
+
+.mobile-menu-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  color: #3b82f6;
+}
+
+/* Мобильное меню */
+.mobile-menu {
+  position: fixed;
+  top: var(--header-height-mobile);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    top: var(--header-height-desktop);
+  }
+}
+
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.header-nav.mobile {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  gap: 16px;
+  min-height: calc(100vh - var(--header-height-mobile));
+}
+
+@media (min-width: 768px) {
+  .header-nav.mobile {
+    min-height: calc(100vh - var(--header-height-desktop));
+    padding: 24px 16px;
+  }
+}
+
+.header-nav.mobile .nav-link {
+  color: #111827;
+  text-align: left;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  display: block;
+}
+
+.header-nav.mobile .nav-link:hover {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.header-nav.mobile .nav-link.active {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.header-nav.mobile .nav-link.active::after {
+  display: none;
+}
+
+.mobile-cta {
+  margin-top: 16px;
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 360px) {
+  .logo-text {
+    font-size: 1.125rem;
+  }
+  
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icon-globe {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Предотвращение скролла при открытом меню */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
